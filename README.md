@@ -1,4 +1,4 @@
-# 🌤️ God-Level Weather Web App
+# 🌤️Weather Web App
 
 A modern, responsive weather web app with **multi-city search, interactive charts, and dynamic weather animations**. Built to impress, this app is perfect for portfolios and live demos.
 
@@ -39,3 +39,4 @@ You can see a live demo by opening `index.html` in your browser.
 ```bash
 git clone https://github.com/SamsaDon07/weather-web-app.git
 cd weather-web-app
+
