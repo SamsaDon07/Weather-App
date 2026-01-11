@@ -1,0 +1,55 @@
+:root {
+  --bg-top: #0f172a;
+  --bg-bottom: #0b3a63;
+  --muted: rgba(255,255,255,0.7);
+}
+
+/* Base styling */
+body{margin:0;font-family:'Inter',sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom));transition:background 1s;}
+.cards-row{scroll-snap-type:x mandatory;overflow-x:auto;padding:10px;}
+.cards-row::-webkit-scrollbar{height:10px;}
+.cards-row::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.06);border-radius:10px;}
+.weather-card{
+  min-width: 280px;
+  flex: 0 0 280px;
+  scroll-snap-align: center;
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 180ms ease;
+}
+.weather-card:hover{ transform: scale(1.05); }
+.weather-main{display:flex;gap:12px;align-items:center;}
+.weather-icon{width:96px;height:96px;}
+.weather-info h2{margin:0;color:#fff;font-weight:800;font-size:1.25rem;}
+.temp{font-size:2rem;font-weight:900;color:#fff;margin:4px 0;}
+.desc{color:var(--muted);text-transform:capitalize;}
+.details{display:flex;gap:6px;color:var(--muted);margin-top:6px;}
+.detail{background:rgba(255,255,255,0.05);padding:6px 8px;border-radius:8px;font-weight:600;}
+.mini-forecast-row{display:flex;gap:6px;overflow-x:auto;margin-top:10px;}
+.mini-forecast-item{text-align:center;}
+.mini-forecast-item .date{font-size:0.7rem;color:var(--muted);}
+.mini-forecast-item .tempval{font-weight:700;color:#fff;}
+
+/* Animations */
+.cloud{position:absolute;top:20%;width:120px;height:60px;background:rgba(255,255,255,0.3);border-radius:50%;animation:moveClouds 60s linear infinite;}
+@keyframes moveClouds{0%{left:-150px;}100%{left:110%;}}
+.rain-drop{position:absolute;width:2px;height:12px;background:rgba(255,255,255,0.6);animation:fall 1s linear infinite;}
+@keyframes fall{0%{top:-20px;opacity:0;}50%{opacity:1;}100%{top:110%;opacity:0;}}
+.snowflake{position:absolute;width:6px;height:6px;background:rgba(255,255,255,0.8);border-radius:50%;animation:fallSnow linear infinite;}
+@keyframes fallSnow{0%{top:-10px;transform:translateX(0);opacity:0;}50%{opacity:1;}100%{top:110%;transform:translateX(50px);opacity:0;}}
+.sun-glow{position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(255,223,0,0.4), transparent 70%);top:10%;left:50%;transform:translateX(-50%);animation:pulse 3s ease-in-out infinite alternate;}
+@keyframes pulse{0%{transform:translateX(-50%) scale(0.95);opacity:0.8;}100%{transform:translateX(-50%) scale(1.05);opacity:1;}}
+
+/* Skeleton loader */
+.skeleton{animation:shimmer 1.6s linear infinite;background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.06),rgba(255,255,255,0.02));border-radius:8px;}
+@keyframes shimmer{0%{background-position:-200px 0}100%{background-position:200px 0}}
+
+/* Responsive */
+@media (max-width:640px){
+  .weather-card{min-width:220px;}
+  .weather-icon{width:72px;height:72px;}
+  .temp{font-size:1.6rem;}
+}

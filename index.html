@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather — God Level UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="relative">
+  <div class="app relative z-10">
+    <header class="app-header flex justify-between items-center mb-4">
+      <div class="title text-white text-2xl font-extrabold">Weather</div>
+      <div class="flex items-center gap-2">
+        <div class="unit-toggle flex rounded-lg overflow-hidden">
+          <button id="unitC" class="unit active px-4 py-2 font-semibold bg-gradient-to-r from-blue-400 to-blue-600 text-white">°C</button>
+          <button id="unitF" class="unit px-4 py-2 font-semibold bg-gray-600 text-white">°F</button>
+        </div>
+      </div>
+    </header>
+
+    <form id="searchForm" class="search flex mb-4" aria-label="Search city">
+      <input type="text" id="cityInput" class="flex-1 p-3 rounded-lg bg-white/5 text-white placeholder:text-white/60 outline-none" 
+        placeholder="Search city or ZIP — comma to search multiple" autocomplete="off">
+      <button id="getWeatherBtn" class="ml-2 px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-green-600 font-semibold text-white">🔍</button>
+      <button id="geoBtn" type="button" class="ml-2 px-4 py-2 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 font-semibold text-white">🌍 My Location</button>
+    </form>
+
+    <main>
+      <!-- Weather Cards -->
+      <section id="weatherResult" class="cards-row flex gap-6 overflow-x-auto snap-x"></section>
+
+      <!-- Forecast Chart Toggle -->
+      <section class="forecast-toggle flex justify-center my-4 gap-2">
+        <button id="toggleHourly" class="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-400 to-blue-600 text-white font-semibold">Hourly</button>
+        <button id="toggleDaily" class="px-4 py-2 rounded-lg bg-gray-600 text-white font-semibold">5-Day</button>
+      </section>
+
+      <!-- Forecast Chart -->
+      <section id="forecastChart" class="w-full h-48 px-6">
+        <canvas id="forecastTempChart"></canvas>
+      </section>
+    </main>
+
+    <footer class="text-center mt-6 text-white/50 text-sm">Tip: press Enter to search — API key in <code>script.js</code></footer>
+  </div>
+
+  <!-- Weather Animations -->
+  <div id="weatherAnimation" class="absolute inset-0 pointer-events-none z-0"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
